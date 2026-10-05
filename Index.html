@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interfaz de login y menú de perfil con Material Design 3 y validación básica en ECMAScript.">
+  
+  <title>Inicio de sesión y menú de perfil</title>
+  <link rel="stylesheet" href="CSS/Style.css">
+  <link rel="stylesheet" href="CSS/Responsive.css">
+
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <header class="app-header">
+
+      <div class="brand">
+        <span class="brand-mark">ST</span>
+        <span class="brand-name">Proyecto ST</span>
+
+      </div>
+
+      <nav class="tab-control" role="tablist" aria-label="Pestañas de navegación">
+        <button class="tab-button active" role="tab" aria-selected="true" data-target="login-panel">Iniciar sesión</button>
+        <button class="tab-button" role="tab" aria-selected="false" data-target="menu-panel">Menú perfil</button>
+        <button class="tab-button" role="tab" aria-selected="false" data-target="offers-panel">Ofertas</button>
+
+      </nav>
+      
+    </header>
+
+    <main class="content-area">
+      
+      <section id="login-panel" class="tab-panel active" role="tabpanel" aria-labelledby="login-tab">
+        <article class="card surface-top">
+          <div class="card-header">
+            <h1>Iniciar sesión</h1>
+            <p>Valida tus credenciales y selecciona el tipo de usuario.</p>
+          </div>
+          <form id="login-form" class="form-grid" novalidate>
+            <label class="field">
+
+              <span>Nombre de usuario</span>
+              <input type="text" id="username" name="username" required autocomplete="username" placeholder="usuario@email.com">
+            </label>
+            <label class="field">
+
+              <span>Contraseña</span>
+              <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Contraseña">
+            </label>
+            <div class="form-actions">
+              <a href="#" id="forgot-password" class="secondary-link">Olvidé mi contraseña</a>
+              <button type="submit" class="primary-button">Iniciar sesión</button>
+            </div>
+          </form>
+          <p id="login-message" class="message" aria-live="polite"></p>
+        </article>
+      </section>
+
+      <section id="menu-panel" class="tab-panel" role="tabpanel" aria-labelledby="menu-tab" hidden>
+        <article class="card surface-top">
+          <div class="card-header">
+            <h1>Menú desplegable</h1>
+            <p>Accede a la función de perfil y otras opciones desde el menú.</p>
+          </div>
+
+          <div class="dropdown-area">
+            <button id="menu-toggle" class="dropdown-button" aria-haspopup="true" aria-expanded="false">Abrir menú</button>
+            <ul id="menu-list" class="dropdown-menu" hidden>
+              <li><button class="menu-item" data-action="profile">Perfil</button></li>
+              <li><button class="menu-item" data-action="settings">Configuración</button></li>
+              <li><button class="menu-item" data-action="logout">Cerrar sesión</button></li>
+            </ul>
+            
+          </div>
+          <section id="profile-area" class="profile-area" hidden>
+            <h2>Perfil</h2>
+            <p>Se muestran los datos de perfil una vez que seleccionas la opción "Perfil".</p>
+            <div class="profile-grid">
+              <div class="profile-card">
+                <span>Nombre:</span>
+                <strong id="profile-user">Invitado</strong>
+              </div>
+              <div class="profile-card">
+                <span>Rol:</span>
+                <strong id="profile-role">N/A</strong>
+              </div>
+            </div>
+          </section>
+        </article>
+      </section>
+
+      <section id="offers-panel" class="tab-panel" role="tabpanel" aria-labelledby="menu-tab" hidden>
+        <article class="card surface-top">
+          <div class="card-header">
+            <h2>Tablero de Ofertas</h2>
+            <button id="btn-nueva-vacante" class="primary-button" type="button">Nueva Oferta</button>
+          </div>
+
+          <div id="offers-form-card" class="offers-card surface-top">
+            <div class="card-header">
+              <h3>Registrar oferta</h3>
+              <p>Ingrese datos de la oferta y revise su registro en la tabla.</p>
+            </div>
+            <form id="offers-form" class="form-grid" novalidate>
+              <label class="field">
+                <span>Nombre de la oferta</span>
+                <input type="text" id="offer-name" name="offerName" required placeholder="Ej. Diseñador UX/UI">
+              </label>
+              <label class="field">
+                <span>Descripción corta</span>
+                <input type="text" id="offer-short-description" name="shortDescription" required placeholder="Resumen breve de la oferta">
+              </label>
+              <label class="field">
+                <span>Palabras clave</span>
+                <input type="text" id="offer-keywords" name="keywords" required placeholder="Ej. UX, diseño, product">
+              </label>
+              <label class="field">
+                <span>Perfil profesional requerido</span>
+                <textarea id="offer-profile" name="profileDescription" rows="4" required placeholder="Describe el perfil profesional requerido"></textarea>
+              </label>
+              <div class="form-actions">
+                <button type="submit" class="primary-button">Guardar oferta</button>
+                <span id="offers-message" class="message" aria-live="polite"></span>
+              </div>
+            </form>
+          </div>
+
+          <div class="table-card">
+            <h3 class="section-title">Registros de ofertas</h3>
+            <div class="table-wrapper">
+              <table id="offers-table" class="data-table" aria-label="Tabla de ofertas registradas">
+                <thead>
+                  <tr>
+                    <th>Oferta</th>
+                    <th>Descripción corta</th>
+                    <th>Palabras clave</th>
+                    <th>Perfil profesional</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="offers-table-body">
+                  <tr><td colspan="4">No hay ofertas registradas aún.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </main>
+
+  <script src="./JS/Lógica.js"></script>
+
+</body>
+</html>
+

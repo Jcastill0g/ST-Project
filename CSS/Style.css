@@ -1,0 +1,367 @@
+:root {
+  color-scheme: light;
+  --surface: #ffffff;
+  --surface-variant: #f2ebff;
+  --primary: #bea1f7;
+  --primary-container: #d9c6ff;
+  --on-primary: #1f1b3d;
+  --secondary: #a6a6a6;
+  --text: #1f1b3d;
+  --text-muted: #5d5671;
+  --shadow: 0 22px 50px rgba(38, 27, 86, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(circle at top, rgba(190,161,247,0.25), transparent 40%),
+              linear-gradient(180deg, #f4f0ff 0%, #f8f8f8 100%);
+  color: var(--text);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.app-shell {
+  width: min(980px, 100%);
+  border-radius: 32px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 24px 32px;
+  background: linear-gradient(180deg, rgba(190,161,247,0.16), rgba(166,166,166,0.08));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.brand-name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.tab-control {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.2rem;
+  background: transparent;
+  color: var(--secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tab-button.active,
+.tab-button:hover {
+  background: rgba(190, 161, 247, 0.16);
+  color: var(--text);
+}
+
+.content-area {
+  padding: 32px;
+}
+
+.card {
+  width: 100%;
+  padding: 32px;
+  border-radius: 28px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.surface-top {
+  background: #fdfbff;
+}
+
+.card-header h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+}
+
+.card-header p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.form-grid {
+  margin-top: 28px;
+  display: grid;
+  gap: 20px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field span {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid rgba(166, 166, 166, 0.35);
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(190, 161, 247, 0.16);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.primary-button,
+.dropdown-button,
+.menu-item {
+  border: none;
+  border-radius: 16px;
+  padding: 14px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: var(--primary);
+  color: #fff;
+  min-width: 160px;
+}
+
+.secondary-link {
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.secondary-link:hover {
+  text-decoration: underline;
+}
+
+.secondary-button {
+  border: 1px solid rgba(166, 166, 166, 0.32);
+  background: #fff;
+  color: var(--text);
+  border-radius: 16px;
+  padding: 12px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.secondary-button:hover {
+  background: rgba(190, 161, 247, 0.12);
+  border-color: var(--primary);
+}
+
+.delete-button {
+  color: #a01e1e;
+  border-color: rgba(160, 30, 30, 0.24);
+}
+
+.delete-button:hover {
+  background: rgba(160, 30, 30, 0.08);
+}
+
+.message {
+  margin-top: 22px;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.message.success {
+  color: #214d15;
+}
+
+.message.error {
+  color: #7c1a1a;
+}
+
+.message.warning {
+  color: #6b4d00;
+}
+
+.dropdown-area {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dropdown-button {
+  background: var(--primary-container);
+  color: var(--on-primary);
+  width: fit-content;
+}
+
+.dropdown-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.menu-item {
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  border: 1px solid rgba(166, 166, 166, 0.24);
+  color: var(--text);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.menu-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.profile-area {
+  margin-top: 24px;
+  padding: 22px;
+  border-radius: 24px;
+  background: #f8f4ff;
+  border: 1px solid rgba(190, 161, 247, 0.28);
+}
+
+.profile-area h2 {
+  margin-top: 0;
+}
+
+.profile-grid {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.profile-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(166, 166, 166, 0.16);
+}
+
+.profile-card span {
+  color: var(--text-muted);
+}
+
+.profile-card strong {
+  color: var(--text);
+}
+
+.offers-card {
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: 28px;
+  background: #fff;
+  border: 1px solid rgba(166, 166, 166, 0.18);
+}
+
+.table-card {
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: 28px;
+  background: #fff;
+  border: 1px solid rgba(166, 166, 166, 0.18);
+}
+
+.section-title {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(166, 166, 166, 0.16);
+}
+
+.data-table th {
+  background: rgba(190, 161, 247, 0.08);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: rgba(190, 161, 247, 0.04);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.hidden {
+  display: none !important;
+}
